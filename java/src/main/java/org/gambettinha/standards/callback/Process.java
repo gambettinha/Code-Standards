@@ -6,16 +6,11 @@ public class Process {
 		ProcessExecutor exec = new ProcessExecutor();
 		return exec.process(input, new ProcessCallback() {
 			
-			public void validate(String input) {
-			}
+			public void validate(String input) {}
 			
-			public String invoke(String input) {
-				return "";
-			}
+			public String invoke(String input) {return "";}
 			
-			public String bindToOutput(String thirdParyOutput) {
-				return "";
-			}
+			public String bindToOutput(String thirdParyOutput) {return "";}
 		});
 	}
 	
@@ -23,16 +18,11 @@ public class Process {
 		ProcessExecutor exec = new ProcessExecutor();
 		return exec.process(input, new ProcessCallback() {
 			
-			public void validate(String input) {
-			}
+			public void validate(String input) {}
 			
-			public String invoke(String input) {
-				return "";
-			}
+			public String invoke(String input) { return "";}
 			
-			public String bindToOutput(String thirdParyOutput) {
-				return "";
-			}
+			public String bindToOutput(String thirdParyOutput) { return ""; }
 		});
 	}
 }
