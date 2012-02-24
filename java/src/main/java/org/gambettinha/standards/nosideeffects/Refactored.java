@@ -4,8 +4,8 @@ public class Refactored {
 
 	public void loginAndInitializeSection(){
 		User user = new User("jeff");
-		checkPassword(user);
-		Session.initialize();
+		if (checkPassword(user))
+			Session.initialize();
 	}
 	
 	private boolean checkPassword(User user) { 
