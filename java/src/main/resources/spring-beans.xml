@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- Without bean factory -->
+
+	<bean id="sqlProviderA"
+		class="org.gambettinha.standards.noboilerplateconfig.SqlProvider">
+		<constructor-arg value="Select * from A" />
+	</bean>
+	<bean id="myDaoA" class="org.gambettinha.standards.noboilerplateconfig.MyDao">
+		<constructor-arg name="sqlProvider" ref="sqlProviderA" />
+	</bean>
+	<bean id="myServiceA" class="org.gambettinha.standards.noboilerplateconfig.MyService">
+		<constructor-arg name="myDao" ref="myDaoA" />
+	</bean>
+
+
+	<bean id="sqlProviderB"
+		class="org.gambettinha.standards.noboilerplateconfig.SqlProvider">
+		<constructor-arg name="mySql" value="Select * from B" />
+	</bean>
+	<bean id="myDaoB" class="org.gambettinha.standards.noboilerplateconfig.MyDao">
+		<constructor-arg name="sqlProvider" ref="sqlProviderB" />
+	</bean>
+	<bean id="myServiceB" class="org.gambettinha.standards.noboilerplateconfig.MyService">
+		<constructor-arg name="myDao" ref="myDaoB" />
+	</bean>
+
+
+	<!-- With bean Factory -->
+	<bean id="myServiceBeanFactory"
+		class="org.gambettinha.standards.noboilerplateconfig.MyServiceBeanFactory" />
+
+	<bean id="myServiceC" factory-bean="myServiceBeanFactory"
+		factory-method="newMyService">
+		<constructor-arg value="select * from C" />
+	</bean>
+
+
+
+
+</beans>
